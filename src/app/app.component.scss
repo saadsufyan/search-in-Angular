@@ -1,3 +1,36 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 table {
-    width: 50%;
-  }
+  width: 70%;
+  margin-top: 20px;
+}
+
+tbody tr td {
+  text-align: center;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+input {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid black;
+  margin-right: 8px;
+}
+
+button {
+  padding: 8px 10px;
+  border: none;
+  background-color: rgb(245, 243, 243);
+  color: rgb(109, 108, 108);
+  cursor: pointer;
+  border-radius: 8px;
+}

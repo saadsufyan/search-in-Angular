@@ -1,36 +1,48 @@
-<h1 class="heading">Github Assessment</h1>
- 
-<div class="form-group">
-  <label for="userName">GitHub User Name</label>
-  <input type="text" class="form-control" name="userName" [(ngModel)]="userName">
+<div class="container">
+
+  <h1 class="heading">Github Assessment</h1>
+
+  <div class="form-group">
+    <input type="text" class="form-control" name="userName" placeholder="GitHub user name" [(ngModel)]="userName">
+    <button type="button" (click)="getRepos()">Get UserDetail</button>
+  </div>
+
+  <!-- <div class="form-group">
+    
+  </div> -->
+
+  <div *ngIf="loading">loading...</div>
+
+  <div *ngIf="errorMessage" class="alert alert-warning">
+    <strong>Warning!</strong> {{errorMessage | json}}
+  </div>
+
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th> User Name</th>
+        <th> Name</th>
+        <th> Public Repos</th>
+        <th> Followers</th>
+        <th> Following</th>
+        <th> Profile Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let repo of repos;">
+        <td class="avatar"><img src="{{repo.avatar_url}}"></td>
+        <td>{{repo.login}}</td>
+        <td>{{repo.name}}</td>
+        <td>{{repo.public_repos}}</td>
+        <td>{{repo.followers}}</td>
+        <td>{{repo.following}}</td>
+      </tr>
+    </tbody>
+  </table>
+   
 </div>
- 
-<div class="form-group">
-  <button type="button" (click)="getRepos()">Get UserDetail</button>
-</div>
- 
-<div *ngIf="loading">loading...</div>
- 
-<div *ngIf="errorMessage" class="alert alert-warning">
-  <strong>Warning!</strong> {{errorMessage | json}}
-</div>
- 
- 
-<table class='table'>
-  <thead>
-    <tr>
-     <th> login</th>
-     <th> name</th>
-     <th> public_repos</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let repo of repos;">
-      <td>{{repo.login}}</td>
-      <td>{{repo.name}}</td>
-      <td>{{repo.public_repos}}</td>
-    </tr>
-  </tbody>
-</table>
- 
-<pre>{{repos | json}}</pre>
+<ul *ngFor="let repo of list | keys">
+  <li>  <strong>{{repo.key}}</strong> , {{repo.value}}</li>
+</ul>
+<!-- <pre>{{repos | json}}</pre> -->
